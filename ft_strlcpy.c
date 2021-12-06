@@ -10,4 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+size_t ft_strlcpy(char *dest, const char *src, size_t size)
+{
+  size_t l;
+  
+  l = 0;
+  if (size > 0)
+  {
+    while (src[l] && l < (size - 1))
+    {
+      dest[l] = src[l];
+      l++;
+    }
+    dest[l] = 0;
+  }
+  while (src[l])
+  {
+    l++;
+  }
+  return (l);
+}
