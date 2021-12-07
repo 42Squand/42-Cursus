@@ -12,18 +12,57 @@
 
 #include "libft.h"
 
+static int  ft_leng+minus(int num)
+{
+  int numblen;
+  
+  numblen = 0;
+  if (num == 0)
+  {
+    numblen = 1;
+  }
+  if (num < 0)
+  {
+    numblen++;
+    num = -1 * num;
+  }
+  while (num != 0)
+  {
+    num = num / 10;
+    numblen++;
+  }
+  return (numblen);
+}
+
 char *ft_itoa(int n)
 {
-  int   i;
-  int   s;
-  char  *str;
+  int   lengnb;
+  char  *s;
+  long  num;
   
-  i = 0;
-  s = 0;
-  if (n == -2147483648)
+  lengnb = 0;
+  num = (long)n;
+  lengnb = ft_leng+minus(n);
+  if (!(s = malloc(lengnb + 1)))
   {
-    return (ft_strdup("-2147483648"));
+    return (NULL);
   }
-  str = malloc((f
-    
-    
+  s[lengnb] = '\0';
+  if (num == 0)
+  {
+    s[0] = '0';
+  }
+  if (num < 0)
+  {
+    s[0] = '-';
+    num = -num;
+  }
+  lengnb--;
+  while (lengnb >= 0 && != 0)
+  {
+    s[lengnb] = num % 10 + '0';
+    num = num / 10;
+    lengnb--;
+  }
+  return (s);
+}
