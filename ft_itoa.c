@@ -13,3 +13,17 @@
 #include "libft.h"
 
 char *ft_itoa(int n)
+{
+  int   i;
+  int   s;
+  char  *str;
+  
+  i = 0;
+  s = 0;
+  if (n == -2147483648)
+  {
+    return (ft_strdup("-2147483648"));
+  }
+  str = malloc((f
+    
+    
