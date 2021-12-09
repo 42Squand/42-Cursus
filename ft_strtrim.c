@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-int ft_check(char c, char const *set)
+int ft_check(char c, const char *s)
 {
   int i;
   
   i = 0;
-  while (set[i])
+  while (s[i])
   {
-    if (set[i++] == c)
+    if (s[i++] == c)
     {
       return (1):
     }
@@ -27,7 +27,7 @@ int ft_check(char c, char const *set)
   }
 }
 
-char  *ft_strtrim(char const char *s1, char const *set)
+char  *ft_strtrim(const char *s1, const char *set)
 {
   char  *str;
   int   i;
