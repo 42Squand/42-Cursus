@@ -8,68 +8,64 @@
 /*   Created: 2021/10/22 13:07:19 by mmujic            #+#    #+#             */
 /*   Updated: 2021/10/22 13:07:57 by mmujic           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/* **********************************************************************
 
-static int		ft_estim(long n)
+static char	*ft_reverse_tab(char *tab, int size)
 {
-	size_t	estim;
-	int		isneg;
+	int	i;
+	int	save;
 
-	estim = 0;
-	isneg = 0;
-	if (n < 0)
+	i = 0;
+	while (i < size)
 	{
-		estim++;
-		isneg++;
-		n = -n;
+		temp = tab[i];
+		tab[i] = tab[size - 1];
+		tab[size - 1] = temp;
+		i++;
+		size--;
 	}
-	while (n >= 1)
+	return (tab);
+}
+
+static int	ft_numit(int n)
+{
+	int	i;
+
+	i = 1;
+	if (n == 0)
+		return (i);
+	while (n != 0)
 	{
-		estim++;
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		i;
+	int		s;
+	char	*str;
+
+	i = 0;
+	sign = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	str = malloc((ft_numiterate(n) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	if (n == 0)
+		str[i++] = '0';
+	if (n < 0 && sign++ == 0)
+		n *= -1;
+	while (n > 0)
+	{
+		str[i++] = '0' + (n % 10);
 		n /= 10;
 	}
-	return (estim);
-}
-
-static char		*ft_gen(char *rtn, long nbr, int len, int isneg)
-{
-	if (nbr != 0)
-		rtn = malloc(sizeof(char) * (len + 1));
-	else
-		return (rtn = ft_strdup("0"));
-	if (!rtn)
-		return (0);
-	isneg = 0;
-	if (nbr < 0)
-	{
-		isneg++;
-		nbr = -nbr;
-	}
-	rtn[len] = '\0';
-	while (--len)
-	{
-		rtn[len] = (nbr % 10) + '0';
-		nbr /= 10;
-	}
-	if (isneg == 1)
-		rtn[0] = '-';
-	else
-		rtn[0] = (nbr % 10) + '0';
-	return (rtn);
-}
-
-char			*ft_itoa(int n)
-{
-	int		len;
-	char	*rtn;
-	long	nbr;
-	int		isneg;
-
-	nbr = n;
-	len = ft_estim(nbr);
-	rtn = 0;
-	isneg = 0;
-	if (!(rtn = ft_gen(rtn, nbr, len, isneg)))
-		return (0);
-	return (rtn);
-}
+	if (sign)
+		str[i++] = '-';
+	ft_revchar_tab(str, i);
+	str[i] = '\0';
+	return (str);
