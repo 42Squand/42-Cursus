@@ -6,8 +6,13 @@
 /*   By: mmujic <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:10:49 by mmujic            #+#    #+#             */
-/*   Updated: 2021/10/22 13:12:20 by mmujic           ###   ########.fr       */
+/*   Updated: 2021/12/13 12:51:09 by mmujic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putchar_fd (char c, int fd)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

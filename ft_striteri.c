@@ -6,8 +6,18 @@
 /*   By: mmujic <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:09:48 by mmujic            #+#    #+#             */
-/*   Updated: 2021/10/22 13:10:32 by mmujic           ###   ########.fr       */
+/*   Updated: 2021/12/13 12:51:59 by mmujic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_striteri (char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	unsigned int	i;
+
+	i = -1;
+	while (s && s[++i])
+	{
+		f(i, &s[i]);
+	}
+	return ;
+}

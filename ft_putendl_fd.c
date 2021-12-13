@@ -6,8 +6,14 @@
 /*   By: mmujic <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:14:02 by mmujic            #+#    #+#             */
-/*   Updated: 2021/10/22 13:14:35 by mmujic           ###   ########.fr       */
+/*   Updated: 2021/12/13 09:56:19 by mmujic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putendl_fd (char *s, int fd)
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}
