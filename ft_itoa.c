@@ -10,31 +10,18 @@
 /*                                                                            */
 /* **********************************************************************
 
-static char	*ft_reverse_tab(char *tab, int size)
-{
-	int	i;
-	int	save;
 
-	i = 0;
-	while (i < size)
-	{
-		temp = tab[i];
-		tab[i] = tab[size - 1];
-		tab[size - 1] = temp;
-		i++;
-		size--;
-	}
-	return (tab);
-}
-
-static int	ft_numit(int n)
+static int	lennbr(int n)
 {
 	int	i;
 
 	i = 1;
-	if (n == 0)
-		return (i);
-	while (n != 0)
+	if (n < 0)
+	{
+		i++;
+		n *= -1;
+	}
+	while (9 < n)
 	{
 		n /= 10;
 		i++;
@@ -44,28 +31,27 @@ static int	ft_numit(int n)
 
 char	*ft_itoa(int n)
 {
+	int		len;
+	char	*res;
 	int		i;
-	int		s;
-	char	*str;
 
-	i = 0;
-	sign = 0;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	str = malloc((ft_numiterate(n) + 1) * sizeof(char));
-	if (!str)
+	len = lennbr(n);
+	res = malloc((len + 1) * sizeof(char));
+	if (!res)
 		return (NULL);
-	if (n == 0)
-		str[i++] = '0';
-	if (n < 0 && sign++ == 0)
-		n *= -1;
-	while (n > 0)
+	i = 0;
+	if (n < 0)
 	{
-		str[i++] = '0' + (n % 10);
+		res[0] = '-';
+		i = 1;
+		n *= -1;
+	}
+	res[len] = '\0';
+	while (i < len--)
+	{
+		res[len] = n % 10 + '0';
 		n /= 10;
 	}
-	if (sign)
-		str[i++] = '-';
-	ft_revchar_tab(str, i);
-	str[i] = '\0';
-	return (str);
+	return (res);
