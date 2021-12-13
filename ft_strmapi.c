@@ -11,18 +11,19 @@
 /* ************************************************************************** */
 
 
-char
-	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	char	*str;
-	size_t	i;
 
-	if (!(str = ft_strdup(s)))
+char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
+{
+	size_t	i;
+	char	*s;
+
+	i = -1;
+	if (!str)
 		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		str[i] = (*f)(i, str[i]);
-		i++;
-	}
-	return (str);
+	s = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
+	while (++i < ft_strlen(str))
+		s[i] = f(i, str[i]);
+	s[i] = '\0';
+	return (s);
