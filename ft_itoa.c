@@ -42,7 +42,7 @@ char *ft_itoa(int n)
   
   lengnb = 0;
   num = (long)n;
-  lengnb = ft_leng+minus(n);
+  lengnb = ft_leng+minus(num);
   if (!(s = malloc(lengnb + 1)))
   {
     return (NULL);
