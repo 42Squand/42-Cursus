@@ -11,19 +11,22 @@
 /* ************************************************************************** */
 
 
-
-char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	char	*s;
+	unsigned int	i;
+	char			*res;
+	int				len;
 
-	i = -1;
-	if (!str)
-		return (NULL);
-	s = malloc((ft_strlen(str) + 1) * sizeof(char));
+	i = 0;
 	if (!s)
 		return (NULL);
-	while (++i < ft_strlen(str))
-		s[i] = f(i, str[i]);
-	s[i] = '\0';
-	return (s);
+	len = ft_strlen(s) + 1;
+	res = ft_calloc(len, sizeof(char));
+	if (!res)
+		return (NULL);
+	while (s[i])
+	{
+		res[i] = (*f)(i, s[i]);
+		i++;
+	}
+	return (res);
