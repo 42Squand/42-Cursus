@@ -8,30 +8,24 @@
 /*   Created: 2021/10/22 13:02:00 by mmujic            #+#    #+#             */
 /*   Updated: 2021/10/22 13:03:35 by mmujic           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/* *******************************************************
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-  size_t  a;
-  size_t  b;
-  char    *str;
-  
-  str = (char*)malloc(sizeof(*s) * (len + 1));
-  if  (!str)
-  {
-    return (NULL);
-  }
-  a = 0;
-  b = 0;
-  while (s[a])
-  {
-    if (a >= start && j < len)
-    {
-      str[b] = s[a];
-      b++;
-    }
-    a++;
-  }
-  str[b] = 0;
-  return (str);
-}
+	char	*res;
+	size_t	slen;
+	size_t	i;
+
+	i = 0;
+	if (!*s)
+		return (NULL);
+	slen = ft_strlen(s);
+	if (slen < len)
+		len = slen;
+	res = malloc(sizeof(*res) * (len + 1));
+	if (!res)
+		return (NULL);
+	while (i < len && start < (unsigned int)ft_strlen(s))
+		res[i++] = s[start++];
+	res[i] = '\0';
+	return (res);
